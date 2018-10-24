@@ -17,23 +17,15 @@ $router->get('/', function () use ($router) {
 
 // Grouping Route
 $router->group(['prefix' => 'admin'], function () use ($router) {
-    $router->get('dashboard', function () {
-        return "Dashboard Admin";
-    });
+    $router->get('dashboard', 'AdminController@dashboard');
 
-    $router->get('profile', function () {
-        return "Profile Admin";
-    });
+    $router->get('profile', 'AdminController@profile');
 
     //use alias for route name
-    $router->get('users', ['as' => 'admin.users', function () {
-        return "Users list";
-    }]);
+    $router->get('users', ['as' => 'admin.users', 'AdminController@users']);
     
     // redirect to admin.users
-    $router->get('list', function () {
-        return redirect()->route('admin.users');
-    });
+    $router->get('list', 'AdminController@list');
 });
 
 // Use middleware
@@ -45,9 +37,5 @@ $router->get('/fail', function () {
     return "Not yet mature";
 });
 
-
-
 // Generate Key for .env
-// $router->get('/key', function () {
-//     return str_random(32);
-// });
+$router->get('/key', 'ExampleController@generateKey');

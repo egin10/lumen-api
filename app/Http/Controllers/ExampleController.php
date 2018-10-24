@@ -14,5 +14,9 @@ class ExampleController extends Controller
         //
     }
 
-    //
+    //Generate Key
+    public function generateKey () 
+    {
+        return str_random(32);
+    }
 }
