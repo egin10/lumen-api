@@ -20,17 +20,29 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
     $router->get('dashboard', function () {
         return "Dashboard Admin";
     });
+
     $router->get('profile', function () {
         return "Profile Admin";
     });
+
     //use alias for route name
     $router->get('users', ['as' => 'admin.users', function () {
         return "Users list";
     }]);
+    
     // redirect to admin.users
     $router->get('list', function () {
         return redirect()->route('admin.users');
     });
+});
+
+// Use middleware
+$router->get('/admin/home', ['middleware' => 'age', function () {
+    return "Old enough";
+}]);
+
+$router->get('/fail', function () {
+    return "Not yet mature";
 });
 
 
