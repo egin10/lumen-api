@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use \Illuminate\Http\Request;
+
 class ExampleController extends Controller
 {
     /**
@@ -26,4 +28,19 @@ class ExampleController extends Controller
         // return 'URL of admin.users: ' . route('admin.users');
         echo '<a href="'. route('admin.users') .'">Redirect to Admin Users</a>';
     }
+
+    //Add Request Handler
+    public function showPath (Request $request)
+    {
+        // return current path
+        return $request->path();
+    }
+
+    //Show Method used in route
+    public function showMethod (Request $request) 
+    {
+        // return method used on route
+        return $request->method();
+    }
+
 }

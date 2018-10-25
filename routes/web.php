@@ -35,7 +35,14 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
 });
 
 //show url using helper route()
-$router->get('show-url', ['as' => 'show-url', 'uses' => 'ExampleController@showURL']);
+$router->get('/show-url', ['as' => 'show-url', 'uses' => 'ExampleController@showURL']);
+
+//Use Request Handler in Controller
+//show path
+$router->get('/showpath', 'ExampleController@showPath');
+//show method
+$router->get('/show-get-method', 'ExampleController@showMethod');
+$router->post('/show-post-method', 'ExampleController@showMethod');
 
 // Use middleware
 $router->get('/admin/home', ['middleware' => 'age', function () {

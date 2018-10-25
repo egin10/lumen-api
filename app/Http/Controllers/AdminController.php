@@ -13,6 +13,9 @@ class AdminController extends Controller
     {
         //Use middleware only for some methods
         $this->middleware('age', ['only' => ['profile']]);
+
+        //Use middleware for except some methods
+        // $this->middleware('age', ['except' => ['profile']]);
     }
 
     //Dashboard page
