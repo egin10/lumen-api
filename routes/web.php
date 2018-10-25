@@ -22,11 +22,20 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
     $router->get('profile', 'AdminController@profile');
 
     //use alias for route name
-    $router->get('users', ['as' => 'admin.users', 'AdminController@users']);
+    $router->get('users', ['as' => 'admin.users', 'uses' => 'AdminController@users']);
     
     // redirect to admin.users
-    $router->get('list', 'AdminController@list');
+    $router->get('list', 'AdminController@userList');
+
+    //parsing params to controller
+    $router->get('user/{id}', 'AdminController@userDetail');
+
+    //option params to controller
+    $router->get('post[/{id}]', 'AdminController@getPost');
 });
+
+//show url using helper route()
+$router->get('show-url', ['as' => 'show-url', 'uses' => 'ExampleController@showURL']);
 
 // Use middleware
 $router->get('/admin/home', ['middleware' => 'age', function () {

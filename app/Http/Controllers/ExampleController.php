@@ -19,4 +19,11 @@ class ExampleController extends Controller
     {
         return str_random(32);
     }
+
+    //Show URL using helper route()
+    public function showURL ()
+    {
+        // return 'URL of admin.users: ' . route('admin.users');
+        echo '<a href="'. route('admin.users') .'">Redirect to Admin Users</a>';
+    }
 }

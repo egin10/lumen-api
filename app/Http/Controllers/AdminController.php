@@ -30,8 +30,21 @@ class AdminController extends Controller
         return "Users list";
     }
 
-    public function list()
+    public function userList()
     {
         return redirect()->route('admin.users');
+    }
+
+    public function userDetail($id)
+    {
+        return 'Page User with ID ' . $id;
+    }
+
+    public function getPost($id = null)
+    {
+        if ($id != null) {
+            return 'Page Post with ID ' . $id;
+        }
+        return 'Page Post with Null ID';
     }
 }
