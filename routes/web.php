@@ -44,6 +44,9 @@ $router->get('/showpath', 'ExampleController@showPath');
 $router->get('/show-get-method', 'ExampleController@showMethod');
 $router->post('/show-post-method', 'ExampleController@showMethod');
 
+//Catch Request body
+$router->post('/add-user', 'ExampleController@addUser');
+
 // Use middleware
 $router->get('/admin/home', ['middleware' => 'age', function () {
     return "Old enough";

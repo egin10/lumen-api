@@ -43,4 +43,29 @@ class ExampleController extends Controller
         return $request->method();
     }
 
+    //Catch Request Body
+    public function addUser (Request $request)
+    {
+        $result = [
+            'username' => $request->username,
+            'password' => $request->password
+        ];
+
+        return 'Username is ' . $result['username'] . ' and Password is ' . $result['password'];
+        
+        // get all request
+        // return $request->all();
+
+        // default value
+        // return $request->input('username', 'default')
+
+        // check filled body parse
+        if ($request->filled(['username', 'password']))
+        {
+            return 'Success';
+        } else {
+            return 'Fail';
+        };
+    }
+
 }
