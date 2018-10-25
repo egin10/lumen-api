@@ -11,7 +11,8 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        //
+        //Use middleware only for some methods
+        $this->middleware('age', ['only' => ['profile']]);
     }
 
     //Dashboard page
