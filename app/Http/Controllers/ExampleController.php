@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use \Illuminate\Http\Request;
+use \Illuminate\Http\Response;
 
 class ExampleController extends Controller
 {
@@ -60,12 +61,24 @@ class ExampleController extends Controller
         // return $request->input('username', 'default')
 
         // check filled body parse
-        if ($request->filled(['username', 'password']))
-        {
-            return 'Success';
-        } else {
-            return 'Fail';
-        };
+        // if ($request->filled(['username', 'password']))
+        // {
+        //     return 'Success';
+        // } else {
+        //     return 'Fail';
+        // };       
+    }
+
+    //Response
+    public function response ()
+    {
+        $data['status'] = 'Success';
+        
+        //using Class Response
+        // return (new Response($data, 200));
+        
+        //use Helper response()
+        return response($data);
     }
 
 }

@@ -56,5 +56,8 @@ $router->get('/fail', function () {
     return "Not yet mature";
 });
 
+//Response
+$router->get('/response', 'ExampleController@response');
+
 // Generate Key for .env
 $router->get('/key', 'ExampleController@generateKey');
